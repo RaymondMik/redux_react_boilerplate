@@ -3,7 +3,7 @@
     "plugins": ["syntax-dynamic-import", "transform-object-rest-spread", "react-hot-loader/babel"],
     "env": {
         "test": {
-          "presets": ["react"]
+          "presets": ["react", "@babel/preset-typescript"]
         }
     }
 }

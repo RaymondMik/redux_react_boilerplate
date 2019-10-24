@@ -5,15 +5,16 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 module.exports = {
+    resolve: { extensions: [".ts", ".tsx", ".js", ".jsx"] },
     mode: 'development',
+    devtool: 'source-map',
     entry: [
-      'babel-polyfill', 'react-hot-loader/patch', './src/index.js'
+      'babel-polyfill', 'react-hot-loader/patch', './src/index.tsx'
     ],
     output: {
       filename: 'bundle.js',
       path: path.resolve(__dirname, './dist')
     },
-    devtool: 'inline-source-map',
     devServer: {
       contentBase: './dist',
       hot: true
@@ -34,9 +35,14 @@ module.exports = {
           ]
         },
         {
-          test: /\.(js|jsx)$/,
+          test: /\.(js)$/,
           exclude: /node_modules/,
-          use: [ 'babel-loader' ]
+          use: [ 'source-map-loader' ]
+        },
+        {
+          test: /\.(ts|tsx)$/,
+          exclude: /node_modules/,
+          use: [ 'ts-loader' ]
         },
         {
           test: /\.(png|svg|jpg|gif)$/,

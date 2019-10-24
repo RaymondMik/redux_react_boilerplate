@@ -1,29 +1,34 @@
-import React from 'react';
+import * as React from 'react';
 import { hot } from 'react-hot-loader';
-import PropTypes from 'prop-types';
 import '../styles/app.sass';
+
+interface AppProps {
+    addText: any;
+    text: string;
+}
+
+interface AppState {
+    previewText: string;
+}
 
 /**
  * Base React component of the application
  */
-class App extends React.Component {
-    constructor() {
-        super();
-        this.textRef;
-
-        this.state = {
-            previewText: null
-        };
+class App extends React.Component<AppProps, AppState> {
+    private textRef = React.createRef<HTMLInputElement>()
+    
+    public state: AppState = {
+        previewText: null
     }
-   
+
     /**
      * Render lines
      * 
      * @param {Array} textStrings - The string we want to render.
      * @returns {JSX} lines to be rendered
      */
-    renderTextLines(textStrings = []) {
-        let textHtml = textStrings.map( (text, i) => <li className="text" key={i}>{ text }</li> );
+    renderTextLines(textStrings: any = []) {
+        let textHtml = textStrings.map( (text: any, i: any) => <li className="text" key={i}>{ text }</li> );
 
         return (
             <ul>{ textHtml }</ul>
@@ -35,9 +40,10 @@ class App extends React.Component {
      * 
      * @fires setState()
      */
-    handleChange(event) {
+    handleChange(event: React.FormEvent<HTMLInputElement>) {
+        const { value }: any = event.target;
         this.setState({
-            previewText: event.target.value
+            previewText: value
         });
     }
 
@@ -46,13 +52,11 @@ class App extends React.Component {
      * 
      * @fires addText() action creator
      */
-    handleSubmit(event) {
+    handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
-        const text = this.textRef;
+        const text: string = this.textRef.current.value;
         // dispatch Redux action
-        this.props.addText(text.value);
-        // reset form
-        event.target.reset();
+        this.props.addText(text);
     }
 
     render() {
@@ -60,7 +64,7 @@ class App extends React.Component {
             <div>
                 <h2>Secret code generator 😁</h2>
                 <form onSubmit={ this.handleSubmit.bind(this) }>
-                    <input type="text" ref={(el) => this.textRef = el} placeholder="write some text here" onChange={ this.handleChange.bind(this) } />
+                    <input type="text" ref={this.textRef} placeholder="write some text here" onChange={ this.handleChange.bind(this) } />
                     <input type="submit" value="Add" />
                 </form>
                 <p className="preview">{ this.state.previewText }</p>
@@ -71,11 +75,6 @@ class App extends React.Component {
     }
     
 }
-
-App.propTypes = {
-	text: PropTypes.array,
-    addText: PropTypes.func
-};
 
 export default hot(module)(App);
 

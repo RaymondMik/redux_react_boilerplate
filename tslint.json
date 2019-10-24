@@ -1,0 +1,22 @@
+{
+   "defaultSeverity": "error",
+   "extends": ["tslint:latest", "tslint-react"],
+   "rules": {
+     "arrow-parens": false,
+     "class-name": true,
+     "curly": [true, "ignore-same-line"],
+     "interface-name": false,
+     "jsx-no-multiline-js": false,
+     "no-duplicate-variable": true,
+     "no-implicit-dependencies": [true, "dev"],
+     "no-submodule-imports": [true, "redux-saga", "redux-saga-test-plan"],
+     "no-unused-expression": true,
+     "no-unused-variable": true,
+     "object-literal-sort-keys": false,
+     "ordered-imports": false,
+     "quotemark": [true, "single", "jsx-double"],
+     "semicolon": true,
+     "trailing-comma": false
+   },
+   "rulesDirectory": []
+ }

@@ -1,6 +1,6 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as actionCreators from '../actions';
+import { addText } from '../actions';
 import App from './App';
 
 /**
@@ -8,7 +8,7 @@ import App from './App';
  * @param {Object} state - The Redux Store state.
  * @returns {Object} props for the React application.
  */
-const mapStateToProps = (state)  => {
+const mapStateToProps = (state: any)  => {
     return {
         text: state.text
     };
@@ -19,9 +19,9 @@ const mapStateToProps = (state)  => {
  * @param {Function} dispatch - The Redux Store dispatch method.
  * @returns {Object} action creators wrapped into a dispatch().
  */
-const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators(actionCreators, dispatch);
-};
+const mapDispatchToProps = (dispatch: any) => ({
+    addText: (text: string) => dispatch(addText(text)),
+});
 
 /**
  * Connect Redux state and actions to the React application.
