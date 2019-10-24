@@ -9,6 +9,9 @@ You will find here a boilerplate to startup a basic Redux/React project with a s
 <h4><code>sagas-react_router</code> branch</h4>
 You will find here a boilerplate to startup a Redux/React project sending HTTP requests to a RESTful API and with page routing, done respectively wih Redux Sagas and React Router v4.
 
+<h4><code>typescript-version</code> branch</h4>
+All the functionalities included in <code>sagas-react_router</code> but written in TypeScript.
+
 <h3>Webpack Setup</h3>
 <p>This boilerplate comes with two Webpack setups: development - defined in <code>webpack.dev.config.js</code> and production (actually a production build) - defined in <code>webpack.prod.config.js</code>.</p>
 
