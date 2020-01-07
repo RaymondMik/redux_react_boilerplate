@@ -1,7 +1,7 @@
 {
     "verbose": true,
-    "moduleFileExtensions": ["ts", "tsx", "json"],
-    "setupTestFrameworkScriptFile": "./enzymeSetup.js",
+    "moduleFileExtensions": ["js", "ts", "tsx", "json"],
+    "setupFilesAfterEnv": ["./enzymeSetup.js"],
     "collectCoverage": true
 }
   

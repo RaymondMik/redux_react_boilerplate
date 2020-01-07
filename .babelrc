@@ -1,9 +1,9 @@
 {
-    "presets": ["env", "react"],
+    "presets": ["@babel/preset-env", "@babel/preset-react"],
     "plugins": ["syntax-dynamic-import", "transform-object-rest-spread", "react-hot-loader/babel"],
     "env": {
         "test": {
-          "presets": ["react", "@babel/preset-typescript"]
+          "presets": ["@babel/preset-react", "@babel/preset-typescript"]
         }
     }
 }

@@ -1,7 +1,7 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { addText } from '../actions';
-import App from './App';
+import App from './App.tsx';
 
 /**
  * Make the Redux store available via props to the React application.

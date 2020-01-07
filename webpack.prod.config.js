@@ -2,13 +2,13 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
     mode: 'production',
     entry: {
-      index: './src/index.js'
+      index: './src/index.tsx'
     },
     output: {
       filename: 'bundle.js',
@@ -40,11 +40,14 @@ module.exports = {
           })
         },
         {
-          test: /\.js$/,
+          test: /\.(js)$/,
           exclude: /node_modules/,
-          use: [
-            {loader: 'babel-loader'}
-          ]
+          use: [ 'source-map-loader' ]
+        },
+        {
+          test: /\.(ts|tsx)$/,
+          exclude: /node_modules/,
+          use: [ 'ts-loader' ]
         },
         {
           test: /\.(png|svg|jpg|gif)$/,
@@ -61,7 +64,7 @@ module.exports = {
       ]
     },
     plugins: [
-      new ExtractTextPlugin({
+      new MiniCssExtractPlugin({
         filename: 'styles.css'
       }),
       new HtmlWebpackPlugin({
@@ -69,7 +72,6 @@ module.exports = {
         filename: 'index.html',
         template: 'src/index.html'
       }),
-      new CleanWebpackPlugin(['dist']),
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify('production')
       }),

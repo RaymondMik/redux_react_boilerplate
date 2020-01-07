@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { initStore } from './store';
-import Base from './components/Base';
+import Base from './components/Base.tsx';
 
 const store = initStore();
 

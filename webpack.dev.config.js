@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 module.exports = {
@@ -28,7 +27,7 @@ module.exports = {
         {
           test: /\.(scss|sass)$/,
           use: [
-            {loader: 'style-loader', options: {sourceMap: true}},
+            {loader: 'style-loader' },
             {loader: 'css-loader', options: {sourceMap: true}},
             {loader: 'postcss-loader', options: {sourceMap: true}},
             {loader: 'sass-loader', options: {sourceMap: true}}
@@ -59,7 +58,6 @@ module.exports = {
       ]
     },
     plugins: [
-      new CleanWebpackPlugin(['dist']),
       new HtmlWebpackPlugin({
         title: 'My Redux/React App',
         filename: 'index.html',
